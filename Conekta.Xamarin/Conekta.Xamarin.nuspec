@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<package>
+  <metadata>
+    <id>Conekta.Xamarin</id>
+    <version>$version$</version>
+    <authors>Boris Scheiman</authors>
+    <projectUrl>https://github.com/bscheiman/Conekta.Xamarin</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Tokenizador (Xamarin) para Conekta. Necesitas tener alguna libreria de servidor para usar el token.</description>
+    <language>es-MX</language>
+    <tags>boris scheiman bscheiman conekta xamarin tokenizer</tags>
+  </metadata>
+
+  <files>
+    <file src="bin\Release\Conekta.Xamarin.dll" target="lib\portable-net45+win+wpa81+wp80\bscheiman.Common.Aspnet.dll" />
+    <file src="bin\Release\Conekta.Xamarin.dll"
+          target="lib\portable-win+net45+MonoAndroid+MonoTouch+wp8\bscheiman.Common.Aspnet.dll" />
+  </files>
+</package>
