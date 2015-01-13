@@ -55,7 +55,7 @@ namespace Conekta.Xamarin {
                 if (platform == "android")
                     wc.Headers["Conekta-Client-User-Agent"] = @"{""agent"": ""Conekta Android SDK""}";
                 else if (platform == "ios")
-                    wc.Headers["Conekta-Client-User-Agent"] = @"{""agent"": ""Conekta Conekta iOS SDK""}";
+                    wc.Headers["Conekta-Client-User-Agent"] = @"{""agent"": ""Conekta iOS SDK""}";
 
                 wc.Credentials = new NetworkCredential(PublicKey, string.Empty);
 
