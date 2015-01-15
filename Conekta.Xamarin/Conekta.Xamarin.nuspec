@@ -13,8 +13,8 @@
   </metadata>
 
   <files>
-    <file src="bin\Release\Conekta.Xamarin.dll" target="lib\portable-net45+win+wpa81+wp80\bscheiman.Common.Aspnet.dll" />
+    <file src="bin\Release\Conekta.Xamarin.dll" target="lib\portable-net45+win+wpa81+wp80\Conekta.Xamarin.dll" />
     <file src="bin\Release\Conekta.Xamarin.dll"
-          target="lib\portable-win+net45+MonoAndroid+MonoTouch+wp8\bscheiman.Common.Aspnet.dll" />
+          target="lib\portable-win+net45+MonoAndroid+MonoTouch+wp8\Conekta.Xamarin.dll" />
   </files>
 </package>
