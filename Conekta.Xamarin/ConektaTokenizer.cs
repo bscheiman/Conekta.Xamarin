@@ -1,6 +1,8 @@
 ﻿#region
 using System;
-using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -46,25 +48,28 @@ namespace Conekta.Xamarin {
             if (string.IsNullOrEmpty(cvc))
                 throw new ArgumentNullException("cvc");
 
-            string platform = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData).Contains(".config") ? "android" : "ios";
+            string platform = "android";//Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData).Contains(".config") ? "android" : "ios";
 
-            using (var wc = new WebClient()) {
-                wc.Headers["Accept"] = "application/vnd.conekta-v0.3.0+json";
-                wc.Headers["Content-Type"] = "application/json";
+            using (var client = new HttpClient()) {
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
+                    Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:", PublicKey))));
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.conekta-v0.3.0+json"));
 
                 if (platform == "android")
-                    wc.Headers["Conekta-Client-User-Agent"] = @"{""agent"": ""Conekta Android SDK""}";
+                    client.DefaultRequestHeaders.Add("Conekta-Client-User-Agent", @"{""agent"": ""Conekta Android SDK""}");
                 else if (platform == "ios")
-                    wc.Headers["Conekta-Client-User-Agent"] = @"{""agent"": ""Conekta iOS SDK""}";
+                    client.DefaultRequestHeaders.Add("Conekta-Client-User-Agent", @"{""agent"": ""Conekta iOS SDK""}");
 
-                wc.Credentials = new NetworkCredential(PublicKey, string.Empty);
-
-                string str =
-                    await
-                        wc.UploadStringTaskAsync(new Uri("https://api.conekta.io/tokens"), "POST",
+                var req = new HttpRequestMessage(HttpMethod.Post, "https://api.conekta.io/tokens") {
+                    Content =
+                        new StringContent(
                             string.Format(
                                 @"{{""card"":{{""name"":""{0}"",""number"":{1},""cvc"":{2},""exp_month"":{3},""exp_year"":{4}}}}}", name,
-                                cardNumber, cvc, expiry.Month, expiry.Year));
+                                cardNumber, cvc, expiry.Month, expiry.Year), Encoding.UTF8, "application/json")
+                };
+
+                string str = await (await client.SendAsync(req)).Content.ReadAsStringAsync();
 
                 // Ye nasty regex hack para no depender de JSON serializers
 
