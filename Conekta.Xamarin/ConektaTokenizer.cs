@@ -10,13 +10,15 @@ using System.Threading.Tasks;
 
 namespace Conekta.Xamarin {
     public class ConektaTokenizer {
+        public RuntimePlatform Platform { get; set; }
         public string PublicKey { get; internal set; }
 
-        public ConektaTokenizer(string publicKey) {
+        public ConektaTokenizer(string publicKey, RuntimePlatform platform) {
             if (string.IsNullOrEmpty(publicKey))
                 throw new ArgumentException("publicKey");
 
             PublicKey = publicKey;
+            Platform = platform;
         }
 
         public async Task<string> GetTokenAsync(string cardNumber, string name, string cvc, int year, int month) {
@@ -48,17 +50,15 @@ namespace Conekta.Xamarin {
             if (string.IsNullOrEmpty(cvc))
                 throw new ArgumentNullException("cvc");
 
-            string platform = "android";//Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData).Contains(".config") ? "android" : "ios";
-
             using (var client = new HttpClient()) {
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
                     Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format("{0}:", PublicKey))));
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.conekta-v0.3.0+json"));
 
-                if (platform == "android")
+                if (Platform == RuntimePlatform.Android)
                     client.DefaultRequestHeaders.Add("Conekta-Client-User-Agent", @"{""agent"": ""Conekta Android SDK""}");
-                else if (platform == "ios")
+                else if (Platform == RuntimePlatform.iOS)
                     client.DefaultRequestHeaders.Add("Conekta-Client-User-Agent", @"{""agent"": ""Conekta iOS SDK""}");
 
                 var req = new HttpRequestMessage(HttpMethod.Post, "https://api.conekta.io/tokens") {
