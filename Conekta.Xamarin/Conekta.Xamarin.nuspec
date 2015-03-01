@@ -13,8 +13,9 @@
   </metadata>
 
   <files>
-    <file src="bin\Release\Conekta.Xamarin.dll" target="lib\portable-net45+win+wpa81+wp80\Conekta.Xamarin.dll" />
-    <file src="bin\Release\Conekta.Xamarin.dll"
-          target="lib\portable-win+net45+MonoAndroid+MonoTouch+wp8\Conekta.Xamarin.dll" />
+    <file src="bin\Release\Conekta.Xamarin.dll" target="lib\MonoAndroid\Conekta.Xamarin.dll" />
+    <file src="bin\Release\Conekta.Xamarin.dll" target="lib\MonoTouch\Conekta.Xamarin.dll" />
+    <file src="bin\Release\Conekta.Xamarin.dll" target="lib\Xamarin.iOS10\Conekta.Xamarin.dll" />
+    <file src="bin\Release\Conekta.Xamarin.dll" target="lib\portable-net45+win+wp8+win8\Conekta.Xamarin.dll" />
   </files>
 </package>
