@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>Conekta.Xamarin</id>
+        <version>$version$</version>
+        <authors>Boris Scheiman</authors>
+        <projectUrl>https://github.com/bscheiman/Conekta.Xamarin</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Conekta card tokenizer for Xamarin PCL (Xamarin.iOS, Xamarin.Android, Xamarin.Forms)</description>
+        <language>en-US</language>
+        <tags>boris scheiman bscheiman conekta</tags>
+        <dependencies>
+          <group>
+              <dependency id="Newtonsoft.Json" version="7.0.1" />
+          </group>
+
+          <group targetFramework="MonoAndroid10">
+          </group>
+
+          <group targetFramework="Xamarin.iOS10">
+          </group>
+        </dependencies>
+        <frameworkAssemblies>
+          <frameworkAssembly assemblyName="System.Net.Http" targetFramework="MonoAndroid10" />
+          <frameworkAssembly assemblyName="System.Net.Http" targetFramework="Xamarin.iOS10" />
+          <frameworkAssembly assemblyName="System.Net.Http" targetFramework="net45,win,wp80"/>
+        </frameworkAssemblies>
+    </metadata>
+    <files>
+        <!-- Xamarin.Android -->
+        <file src="Conekta.Xamarin.PCL/bin/Release/Conekta.Xamarin.PCL*" target="lib/MonoAndroid" />
+        <file src="Conekta.Xamarin.Droid/bin/Release/Conekta.Xamarin.Droid*" target="lib/MonoAndroid" />
+
+        <!-- Xamarin.iOS -->
+        <file src="Conekta.Xamarin.PCL/bin/Release/Conekta.Xamarin.PCL*" target="lib/xamarinios10" />
+        <file src="Conekta.Xamarin.iOS/bin/Release/Conekta.Xamarin.iOS*" target="lib/xamarinios10" />
+    </files>
+</package>
