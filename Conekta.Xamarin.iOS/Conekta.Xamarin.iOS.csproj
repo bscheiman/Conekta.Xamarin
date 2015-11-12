@@ -40,14 +40,9 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ConektaTokenizer.cs" />
-    <Compile Include="DeviceDelegate.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\Conekta.Xamarin.iOS.Library\Conekta.Xamarin.iOS.Library.csproj">
-      <Project>{93E933BA-2E87-42B8-8792-CF0E40B00DCB}</Project>
-      <Name>Conekta.Xamarin.iOS.Library</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Conekta.Xamarin.PCL\Conekta.Xamarin.PCL.csproj">
       <Project>{7CEEDC03-E669-42DA-981D-20E61CB64312}</Project>
       <Name>Conekta.Xamarin.PCL</Name>

@@ -1,12 +1,6 @@
 ﻿<Properties StartupItem="Conekta.Xamarin.iOS/Conekta.Xamarin.iOS.csproj" RefactoringSettings.EnableRefactorings="True">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Conekta.Xamarin.PCL/BaseConektaTokenizer.cs">
-    <Files>
-      <File FileName="Conekta.Xamarin.PCL/BaseConektaTokenizer.cs" Line="44" Column="45" />
-      <File FileName="Conekta.Xamarin.iOS/ConektaTokenizer.cs" Line="14" Column="1" />
-      <File FileName="Conekta.Xamarin.iOS/DeviceDelegate.cs" Line="1" Column="1" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

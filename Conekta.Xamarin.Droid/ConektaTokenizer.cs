@@ -2,7 +2,7 @@
 
 namespace Conekta.Xamarin.Droid {
 	public class ConektaTokenizer : BaseConektaTokenizer {
-		public ConektaTokenizer(string publicKey) : base(publicKey, RuntimePlatform.iOS) {
+		public ConektaTokenizer(string publicKey) : base(publicKey, RuntimePlatform.Android) {
 		}
 
 		public override string GetFingerprint() {
